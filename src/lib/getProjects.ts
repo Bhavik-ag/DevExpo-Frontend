@@ -1,11 +1,25 @@
-const getProjects = async () => {
+import axios from "axios";
+import { ProjectCardType } from "@/app/projects/page";
+
+const getProjects = (): { data: ProjectCardType[]; status: string } => {
   const url = process.env.NEXT_PUBLIC_API_BASE_URL + "project/";
-  console.log(url);
-  const res = await fetch(url, { next: { revalidate: 3600 } });
-  if (!res.ok) {
-    throw new Error("Failed to fetch projects");
-  }
-  return await res.json();
+
+  const response = axios
+    .get(url)
+    .then((res) => {
+      return {
+        data: res.data,
+        status: "success",
+      };
+    })
+    .catch((err) => {
+      return {
+        data: [],
+        status: "error",
+      };
+    });
+
+  return response;
 };
 
 export default getProjects;

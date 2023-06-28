@@ -5,7 +5,7 @@ export default function Hero() {
     <section className="bg-white relative dark:bg-gray-900 w-full">
       <div className="py-8 px-4 mx-auto max-w-screen-xl text-center lg:py-16 z-10 relative">
         <Link
-          href="#"
+          href="/projects/add"
           className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-blue-700 bg-blue-100 rounded-full dark:bg-blue-900 dark:text-white hover:bg-blue-200 dark:hover:bg-blue-800"
         >
           <span className="text-xs bg-blue-600 rounded-full text-white px-4 py-1.5 mr-3">

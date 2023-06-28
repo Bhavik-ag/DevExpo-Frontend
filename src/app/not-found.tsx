@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function NotFound() {
   return (
-    <section className="bg-white flex h-full items-center dark:bg-gray-900">
+    <main className="flex flex-grow flex-shrink flex-col justify-center items-center">
       <div className="py-8 px-4 mx-auto items-center max-w-screen-xl lg:py-16 lg:px-6">
         <div className="mx-auto max-w-screen-sm text-center">
           <h1 className="mb-4 text-7xl tracking-tight font-extrabold lg:text-9xl text-blue-600 dark:text-blue-500">
@@ -23,6 +23,6 @@ export default function NotFound() {
           </Link>
         </div>
       </div>
-    </section>
+    </main>
   );
 }

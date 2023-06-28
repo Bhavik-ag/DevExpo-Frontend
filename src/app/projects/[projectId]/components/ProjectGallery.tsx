@@ -9,13 +9,15 @@ export default function ProjectGallery({ images }: { images: string[] }) {
   return (
     <div className="grid gap-4">
       <div className="flex justify-center">
-        <Image
-          className="h-auto max-w-full rounded-lg"
-          src={selectedImage}
-          alt=""
-          width={860}
-          height={576}
-        />
+        {images.length > 0 && (
+          <Image
+            className="h-auto max-w-full rounded-lg"
+            src={selectedImage}
+            alt=""
+            width={860}
+            height={576}
+          />
+        )}
       </div>
       <div className="grid grid-cols-4 gap-2.5">
         {images.map((image) => {

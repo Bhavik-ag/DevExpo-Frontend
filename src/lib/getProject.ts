@@ -1,11 +1,18 @@
+import axios from "axios";
+import { cookies } from "next/headers";
+
 const getProject = async (projectId: string) => {
   const url = process.env.NEXT_PUBLIC_API_BASE_URL + "project/" + projectId;
-  console.log(url);
-  const res = await fetch(url, { next: { revalidate: 60 } });
-  if (!res.ok) {
-    throw new Error("Failed to fetch projects");
-  }
-  return await res.json();
+
+  const cookieStore = cookies();
+
+  const res = await axios.get(url, {
+    withCredentials: true,
+    headers: {
+      Authorization: "Bearer " + cookieStore.get("token"),
+    },
+  });
+  return res.data;
 };
 
 export default getProject;

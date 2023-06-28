@@ -4,10 +4,11 @@ import { useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import Image from "next/image";
+import { useAppSelector } from "@/store/hooks";
+import Avatar from "./Avatar";
 
 const links = [
   { href: "/projects", label: "Projects" },
-  { href: "/about", label: "About" },
   { href: "/contact", label: "Contact" },
 ];
 
@@ -15,29 +16,46 @@ const Navbar = ({ selected }: { selected: string }) => {
   const [openDropdown, setOpenDropdown] = useState<boolean>(false);
   const pathname = usePathname();
 
+  const { isAuthenticated, isLoading, user } = useAppSelector(
+    (state) => state.auth
+  );
+
+  const guestLinks = (
+    <>
+      <Link
+        href="/user/login/"
+        className="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
+      >
+        Log in
+      </Link>
+      <Link
+        href="/user/register/"
+        className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none "
+      >
+        Get started
+      </Link>
+    </>
+  );
+
+  const authLinks = <>{user && <Avatar user={user} />}</>;
+
   return (
-    <nav className="bg-white border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
+    <nav className="bg-white flex-grow-0 flex-shrink border-gray-200 px-4 lg:px-6 py-2.5 dark:bg-gray-800">
       <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl">
         <Link href={"/"} className="flex items-center gap-2">
           <Image src="/devexpo.png" width={50} height={20} alt="" />
           <span className="self-center text-xl font-semibold whitespace-nowrap text-black dark:text-white">
-            DexExpo
+            DevExpo
           </span>
         </Link>
 
         <div className="flex items-center md:order-2">
-          <Link
-            href="/user/login/"
-            className="text-gray-800 dark:text-white hover:bg-gray-50 focus:ring-4 focus:ring-gray-300 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:hover:bg-gray-700 focus:outline-none dark:focus:ring-gray-800"
-          >
-            Log in
-          </Link>
-          <Link
-            href="/user/register/"
-            className="text-white bg-blue-700 hover:bg-blue-800 font-medium rounded-lg text-sm px-4 lg:px-5 py-2 lg:py-2.5 mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none "
-          >
-            Get started
-          </Link>
+          {!isLoading
+            ? isAuthenticated && user != null
+              ? authLinks
+              : guestLinks
+            : null}
+
           <button
             data-collapse-toggle="mobile-menu-2"
             type="button"

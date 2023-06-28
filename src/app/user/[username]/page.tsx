@@ -28,7 +28,6 @@ type Profile = {
 
 export default async function UserProfile({ params: { username } }: Params) {
   const user: Profile = await getProfile(username);
-  console.log(user);
 
   return (
     <>
@@ -99,14 +98,12 @@ export default async function UserProfile({ params: { username } }: Params) {
                 target="_blank"
                 className="inline-flex items-center justify-center px-5 py-3 text-base font-medium text-gray-500 rounded-lg bg-gray-50 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white"
               >
-                {/* Linkedin Icon Svg Here */}
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="w-12 h-12 mr-3"
                   viewBox="0 0 512 512"
                   fill="currentColor"
                 >
-                  <title>ionicons-v5_logos</title>
                   <path d="M444.17,32H70.28C49.85,32,32,46.7,32,66.89V441.61C32,461.91,49.85,480,70.28,480H444.06C464.6,480,480,461.79,480,441.61V66.89C480.12,46.7,464.6,32,444.17,32ZM170.87,405.43H106.69V205.88h64.18ZM141,175.54h-.46c-20.54,0-33.84-15.29-33.84-34.43,0-19.49,13.65-34.42,34.65-34.42s33.85,14.82,34.31,34.42C175.65,160.25,162.35,175.54,141,175.54ZM405.43,405.43H341.25V296.32c0-26.14-9.34-44-32.56-44-17.74,0-28.24,12-32.91,23.69-1.75,4.2-2.22,9.92-2.22,15.76V405.43H209.38V205.88h64.18v27.77c9.34-13.3,23.93-32.44,57.88-32.44,42.13,0,74,27.77,74,87.64Z"></path>
                 </svg>
 
@@ -159,7 +156,7 @@ export default async function UserProfile({ params: { username } }: Params) {
         </div>
       </section>
 
-      <section className="flex-col min-h-screen items-center px-5">
+      <section className="flex-col items-center px-5">
         <h3 className="text-2xl font-bold text-center text-gray-800 dark:text-white">
           Projects
         </h3>

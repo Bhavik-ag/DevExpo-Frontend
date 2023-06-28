@@ -1,10 +1,14 @@
 const likeProject = async (projectId: number) => {
   const url =
     process.env.NEXT_PUBLIC_API_BASE_URL + "project/" + projectId + "/like/";
-  const res = await fetch(url, { next: { revalidate: 1 } });
+  const res = await fetch(url, {
+    credentials: "include",
+  });
+  console.log(res);
   if (!res.ok) {
     if (res.status === 401) {
-      throw new Error("You must be logged in to like/dislike projects");
+      const data = { error: "Unauthorized" };
+      return data;
     } else {
       throw new Error("Failed to like/dislike project");
     }
