@@ -63,9 +63,10 @@ export default function Reviews({
             </button>
           </form>
           <div className="flex flex-col">
-            {reviewData.map((review) => (
-              <Review review={review} key={review.id} />
-            ))}
+            {reviewData.length > 0 &&
+              reviewData.map((review) => (
+                <Review review={review} key={review.id} />
+              ))}
           </div>
         </div>
       </div>

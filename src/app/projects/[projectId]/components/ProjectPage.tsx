@@ -168,7 +168,7 @@ export default function ProjectPage({
                         href={project.demo_link}
                         target="_blank"
                       >
-                        {project.demo_link}
+                        {project.demo_link === "" ? "N/A" : project.demo_link}
                       </Link>
                     </li>
                     <li>
@@ -180,14 +180,14 @@ export default function ProjectPage({
                         href={project && project.repo_link}
                         target="_blank"
                       >
-                        {project && project.repo_link}
+                        {project.repo_link === "" ? "N/A" : project.repo_link}
                       </Link>
                     </li>
                   </ul>
                 </div>
               </div>
             )}
-            {project && project.id && project.reviews.length > 0 && (
+            {project && project.id && (
               <Reviews reviews={project.reviews} projectId={project?.id} />
             )}
           </div>

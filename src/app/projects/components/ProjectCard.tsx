@@ -8,10 +8,10 @@ type Props = {
 
 const ProjectCard = ({ project }: Props) => {
   return (
-    <div className="aspect-[15/10] rounded-lg sm:aspect-auto sm:h-[340px] bg-white border border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700">
+    <div className="sm:h-[380px] rounded-lg bg-white border w-full border-gray-200 shadow dark:bg-gray-800 dark:border-gray-700">
       <Link href={`/projects/${project.id}`}>
         <Image
-          className="rounded-t-lg sm:h-[150px] object-cover"
+          className="rounded-t-lg object-cover aspect-[16/9]"
           src={project.image_1}
           alt={project.title}
           width={800}
@@ -31,20 +31,20 @@ const ProjectCard = ({ project }: Props) => {
           {project.about}
         </p>
         {/* <Link
-          href={`/projects/${project.id}`}
-          className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:outline-none dark:bg-blue-600 dark:hover:bg-blue-700"
-        >
-          Explore
-          <svg
-            aria-hidden="true"
-            className="w-4 h-4 ml-2 -mr-1"
-            fill="currentColor"
-            viewBox="0 0 20 20"
-            xmlns="http://www.w3.org/2000/svg"
+            href={`/projects/${project.id}`}
+            className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:outline-none dark:bg-blue-600 dark:hover:bg-blue-700"
           >
-            <path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"></path>
-          </svg>
-        </Link> */}
+            Explore
+            <svg
+              aria-hidden="true"
+              className="w-4 h-4 ml-2 -mr-1"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z"></path>
+            </svg>
+          </Link> */}
       </div>
     </div>
   );

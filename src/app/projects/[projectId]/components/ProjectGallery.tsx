@@ -11,7 +11,7 @@ export default function ProjectGallery({ images }: { images: string[] }) {
       <div className="flex justify-center">
         {images.length > 0 && (
           <Image
-            className="h-auto max-w-full rounded-lg"
+            className="h-auto max-w-full rounded-lg aspect-[16/9] object-cover"
             src={selectedImage}
             alt=""
             width={860}
@@ -25,7 +25,7 @@ export default function ProjectGallery({ images }: { images: string[] }) {
             return (
               <div className="mb-2.5" key={image}>
                 <Image
-                  className={`h-auto max-w-full rounded-lg ${
+                  className={`h-auto max-w-full rounded-lg aspect-[16/9] object-cover ${
                     selectedImage === image
                       ? "border-2 border-white border-heading"
                       : ""

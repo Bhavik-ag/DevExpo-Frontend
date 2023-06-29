@@ -1,5 +1,6 @@
 "use client";
 
+import Maintenance from "@/app/components/Maintenance";
 import ProjectPage from "./components/ProjectPage";
 import { useRetrieveProjectQuery } from "@/store/features/projectApiSlice";
 
@@ -47,6 +48,7 @@ type Params = {
 
 export default function Project({ params: { projectId } }: Params) {
   const { data, isLoading } = useRetrieveProjectQuery(projectId);
+  console.log(data);
 
   return (
     <>
@@ -54,8 +56,10 @@ export default function Project({ params: { projectId } }: Params) {
         <div className="flex justify-center items-center h-screen">
           <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-gray-900"></div>
         </div>
-      ) : (
+      ) : data ? (
         <ProjectPage projectData={data} />
+      ) : (
+        <Maintenance />
       )}
     </>
   );

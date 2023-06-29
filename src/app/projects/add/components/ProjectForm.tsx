@@ -83,7 +83,7 @@ export default function ProjectForm() {
       .unwrap()
       .then((res) => {
         router.push(`/projects/${res.id}`);
-        toast.success("Project Added Successfully!!");
+        toast.success("Project Added Successfully !!");
       })
       .catch((err) => {
         toast.error(err.message);
@@ -225,7 +225,7 @@ export default function ProjectForm() {
               </label>
               <label
                 htmlFor="thumbnail-images"
-                className="flex flex-col items-center justify-center w-full h-20 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
+                className="flex flex-col items-center justify-center w-full h-22 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
               >
                 {thumbnail ? (
                   <div className="flex flex-col items-center justify-center py-2">
@@ -241,6 +241,10 @@ export default function ProjectForm() {
                     <p className="text-sm text-gray-500 dark:text-gray-400">
                       <span className="font-semibold">Click to upload</span> or
                       drag and drop
+                    </p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      <span className="font-semibold">Prefered ratio:</span>{" "}
+                      16:9
                     </p>
                   </div>
                 )}
@@ -289,9 +293,9 @@ export default function ProjectForm() {
                       xmlns="http://www.w3.org/2000/svg"
                     >
                       <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth="2"
                         d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
                       ></path>
                     </svg>
@@ -301,6 +305,10 @@ export default function ProjectForm() {
                     <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
                       <span className="font-semibold">Click to upload</span> or
                       drag and drop
+                    </p>
+                    <p className="text-xs text-gray-500 dark:text-gray-400">
+                      <span className="font-semibold">Prefered ratio:</span>{" "}
+                      16:9
                     </p>
                   </div>
                 )}
