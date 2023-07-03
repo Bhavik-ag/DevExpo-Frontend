@@ -3,7 +3,7 @@ import { apiSlice } from "../services/apiSlice";
 const projectApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     retrieveProject: builder.query({
-      query: (projectId: string) => "/project/" + projectId,
+      query: (projectId: string) => "/project/" + projectId + "/",
     }),
     retrieveProjects: builder.query({
       query: () => "/project/",
@@ -31,7 +31,7 @@ const projectApiSlice = apiSlice.injectEndpoints({
 });
 
 export const {
-  useRetrieveProjectQuery,
+  useLazyRetrieveProjectQuery,
   useRetrieveProjectsQuery,
   useLikeProjectMutation,
   useCreateReviewMutation,

@@ -93,6 +93,15 @@ export default function Avatar({ user }: Prop) {
           </li>
           <li>
             <Link
+              href={`/user/${user.username}/edit`}
+              onClick={() => setOpenDropdown(false)}
+              className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+            >
+              Edit Profile
+            </Link>
+          </li>
+          <li>
+            <Link
               href="/projects/add"
               onClick={() => setOpenDropdown(false)}
               className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"

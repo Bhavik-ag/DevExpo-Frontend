@@ -217,10 +217,7 @@ export default function ProjectForm() {
             </div>
             {/* Thumbnail Image */}
             <div className="sm:col-span-2">
-              <label
-                htmlFor="description"
-                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-              >
+              <label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
                 Thumbnail Image *
               </label>
               <label

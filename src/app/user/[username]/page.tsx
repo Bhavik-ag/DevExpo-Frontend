@@ -1,8 +1,9 @@
 import getProfile from "@/lib/getProfile";
-import { Project } from "@/app/projects/page";
+import { Project } from "@/app/projects/[projectId]/page";
 import Link from "next/link";
 import Image from "next/image";
 import ProfileProjectCard from "./components/ProfileProjectCard";
+import { Metadata } from "next";
 
 type Params = {
   params: {
@@ -10,7 +11,7 @@ type Params = {
   };
 };
 
-type Profile = {
+export type ProfileType = {
   id: number;
   username: string;
   first_name: string;
@@ -26,8 +27,27 @@ type Profile = {
   projects: Project[];
 };
 
+export async function generateMetadata({
+  params: { username },
+}: Params): Promise<Metadata> {
+  const user: ProfileType = await getProfile(username);
+
+  return {
+    title: `${user.first_name} ${user.last_name} | DevExpo`,
+    description: user.profile.bio,
+    applicationName: "DevExpo",
+    keywords: ["devexpo", "devexpo projects", "devexpo profile"],
+    colorScheme: "dark",
+    authors: [{ name: user.first_name }, { name: "DevExpo" }],
+    publisher: "DevExpo",
+    creator: "DevExpo",
+  };
+}
+
+export const revalidate = 60;
+
 export default async function UserProfile({ params: { username } }: Params) {
-  const user: Profile = await getProfile(username);
+  const user: ProfileType = await getProfile(username);
 
   return (
     <>
@@ -59,6 +79,7 @@ export default async function UserProfile({ params: { username } }: Params) {
           </div>
         </div>
       </section>
+
       {/* Social Links */}
       <section className="flex-col items-center">
         <h3 className="text-2xl font-bold text-center text-gray-800 dark:text-white">
@@ -156,11 +177,12 @@ export default async function UserProfile({ params: { username } }: Params) {
         </div>
       </section>
 
+      {/* Projects */}
       <section className="flex-col items-center px-5">
         <h3 className="text-2xl font-bold text-center text-gray-800 dark:text-white">
           Projects
         </h3>
-        <div className="mx-auto flex w-full max-w-7 xl justify-center space-y-4 py-10 sm:gap-6 sm:space-y-0">
+        <div className="mx-auto flex flex-col w-full max-w-7 xl items-center space-y-4 py-10 sm:gap-6 sm:space-y-0">
           {user.projects.map((project: Project) => (
             <ProfileProjectCard project={project} key={project.id} />
           ))}

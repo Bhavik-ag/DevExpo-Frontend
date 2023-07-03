@@ -31,7 +31,7 @@ export default function RegisterForm() {
             profile_pic: user.profile_image,
           })
         );
-        router.push("/projects/");
+        router.push(`/user/${user.username}/edit`);
         console.log(user);
       })
       .catch((err) => {

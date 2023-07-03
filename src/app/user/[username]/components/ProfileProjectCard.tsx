@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { Project } from "@/app/projects/page";
+import { Project } from "@/app/projects/[projectId]/page";
 
 type Props = {
   project: Project;
@@ -8,11 +8,11 @@ type Props = {
 
 export default function ProfileProjectCard({ project }: Props) {
   return (
-    <div className="flex flex-wrap items-center bg-white border border-gray-200 rounded-lg shadow md:max-w-4xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
+    <div className="flex flex-wrap w-full items-center bg-white border border-gray-200 rounded-lg shadow md:max-w-4xl hover:bg-gray-100 dark:border-gray-700 dark:bg-gray-800 dark:hover:bg-gray-700">
       {/* Project Image */}
       <Link href={`/projects/${project.id}`}>
         <Image
-          className=" w-full rounded-t-lg md:max-w-md md:rounded-none md:rounded-l-lg"
+          className=" w-full rounded-t-lg object-cover aspect-[16/9] md:max-w-md md:rounded-none md:rounded-l-lg"
           src={project.image_1}
           alt=""
           width={860}
@@ -34,7 +34,7 @@ export default function ProfileProjectCard({ project }: Props) {
           href={`/projects/${project.id}`}
           className="inline-flex items-center px-3 py-2 text-sm font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:outline-none dark:bg-blue-600 dark:hover:bg-blue-700"
         >
-          Read more
+          Explore
           <svg
             aria-hidden="true"
             className="w-4 h-4 ml-2 -mr-1"

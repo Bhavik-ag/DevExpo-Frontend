@@ -7,10 +7,7 @@ import Image from "next/image";
 import { useAppSelector } from "@/store/hooks";
 import Avatar from "./Avatar";
 
-const links = [
-  { href: "/projects", label: "Projects" },
-  { href: "/contact", label: "Contact" },
-];
+const links = [{ href: "/projects", label: "Projects" }];
 
 const Navbar = ({ selected }: { selected: string }) => {
   const [openDropdown, setOpenDropdown] = useState<boolean>(false);

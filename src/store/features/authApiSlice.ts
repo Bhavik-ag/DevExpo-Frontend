@@ -3,7 +3,14 @@ import { apiSlice } from "../services/apiSlice";
 const authApiSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
     retrieveUser: builder.query({
-      query: (username: string) => "/user/" + username,
+      query: (username: string) => "/user/profile/" + username,
+    }),
+    updateUser: builder.mutation({
+      query: (data: { userData: FormData; username: string }) => ({
+        url: `/user/profile/${data.username}/update/`,
+        method: "PATCH",
+        body: data.userData,
+      }),
     }),
     login: builder.mutation({
       query: (credentials: { username: string; password: string }) => ({
@@ -41,6 +48,7 @@ const authApiSlice = apiSlice.injectEndpoints({
 
 export const {
   useRetrieveUserQuery,
+  useUpdateUserMutation,
   useLoginMutation,
   useRegisterMutation,
   useVerifyMutation,

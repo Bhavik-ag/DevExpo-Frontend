@@ -1,7 +1,10 @@
 import axios from "axios";
 import { ProjectCardType } from "@/app/projects/page";
 
-const getProjects = (): { data: ProjectCardType[]; status: string } => {
+const getProjects = (): Promise<{
+  data: ProjectCardType[] | never[];
+  status: string;
+}> => {
   const url = process.env.NEXT_PUBLIC_API_BASE_URL + "project/";
 
   const response = axios

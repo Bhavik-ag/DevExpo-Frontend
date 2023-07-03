@@ -13,7 +13,7 @@ export type ProjectCardType = {
 };
 
 export default async function Projects() {
-  const projects: { data: ProjectCardType[]; status: string } =
+  const projects: { data: ProjectCardType[] | never[]; status: string } =
     await getProjects();
 
   if (projects.status === "error") {
@@ -38,7 +38,7 @@ export default async function Projects() {
             </div>
           </div>
           <div className="flex flex-col items-center px-5">
-            <div className="mx-auto grid w-full max-w-7 xl items-center space-y-4 py-10 sm:grid-cols-2 sm:gap-6 md:grid-cols-3 sm:space-y-0">
+            <div className="mx-auto grid w-full max-w-7 xl items-center space-y-4 py-10 sm:grid-cols-2 sm:gap-6 md:grid-cols-3  sm:space-y-0">
               {projects.data.map((project: ProjectCardType) => (
                 <ProjectCard project={project} key={project.id} />
               ))}

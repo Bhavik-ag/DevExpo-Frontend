@@ -2,7 +2,7 @@
 
 import Spinner from "@/app/components/Spinner";
 import { useLoginMutation } from "@/store/features/authApiSlice";
-import { FormEvent, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "@/store/hooks";
 import { setCredentials, setUser } from "@/store/features/authSlice";
 import { useRouter } from "next/navigation";
@@ -18,9 +18,9 @@ export default function LoginForm() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-  if (isAuthenticated) {
-    router.push("/projects");
-  }
+  useEffect(() => {
+    if (isAuthenticated) router.push("/projects/");
+  }, [isAuthenticated]);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -36,7 +36,7 @@ export default function LoginForm() {
             profile_pic: user.profile_image,
           })
         );
-        router.push("/projects/");
+        router.back();
       })
       .catch((err) => {
         toast.error(err.data.detail);

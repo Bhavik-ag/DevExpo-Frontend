@@ -7,6 +7,7 @@ import { toast } from "react-hot-toast";
 import { useAppSelector } from "@/store/hooks";
 import { useLikeProjectMutation } from "@/store/features/projectApiSlice";
 import Reviews from "./Reviews";
+import { useRouter } from "next/navigation";
 
 export default function ProjectPage({
   projectData,
@@ -14,21 +15,6 @@ export default function ProjectPage({
   projectData: Project | null;
 }) {
   const [project, setProject] = useState<Project | null>(projectData);
-
-  const { isAuthenticated } = useAppSelector((state) => state.auth);
-  const [likeProject] = useLikeProjectMutation();
-
-  const handleLikeProject = () => {
-    if (project === null) return;
-    likeProject(project.id)
-      .unwrap()
-      .then((res: Project) => {
-        setProject(res);
-      })
-      .catch(() => {
-        toast.error("Something went wrong");
-      });
-  };
 
   return (
     <div>
@@ -88,7 +74,7 @@ export default function ProjectPage({
                   </span>
                 </div>
               </div>
-              <div className="flex items-center space-x-1">
+              {/* <div className="flex items-center space-x-1">
                 <button
                   type="button"
                   onClick={handleLikeProject}
@@ -98,7 +84,7 @@ export default function ProjectPage({
                   <svg
                     aria-hidden="true"
                     className={`w-8 h-8 ${
-                      project && project.user_liked
+                      project && isAuthenticated && project.user_liked
                         ? "text-yellow-300"
                         : "text-white"
                     }`}
@@ -115,7 +101,7 @@ export default function ProjectPage({
                     {project && project.likes_count}
                   </span>
                 </button>
-              </div>
+              </div> */}
             </div>
           </div>
           <ProjectGallery

@@ -1,11 +1,12 @@
 "use client";
-import ProjectForm from "./components/ProjectForm";
+
+import { useEffect } from "react";
 import { useAppSelector } from "@/store/hooks";
 import { useRouter } from "next/navigation";
-import { useEffect } from "react";
 import { toast } from "react-hot-toast";
+import ProfileForm from "./components/ProfileForm";
 
-export default function AddProject() {
+export default function ProfileEdit() {
   const { isAuthenticated, isLoading } = useAppSelector((state) => state.auth);
 
   const router = useRouter();
@@ -17,5 +18,5 @@ export default function AddProject() {
     }
   }, [isAuthenticated, isLoading]);
 
-  return <ProjectForm />;
+  return <ProfileForm />;
 }
