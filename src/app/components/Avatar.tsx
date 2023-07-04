@@ -55,7 +55,7 @@ export default function Avatar({ user }: Prop) {
   return (
     <div className="relative" ref={wrapperRef}>
       <Image
-        className="w-10 h-10 rounded-full cursor-pointer"
+        className="w-10 h-10 rounded-full cursor-pointer object-cover"
         src={user.profile_pic}
         alt="User dropdown"
         onClick={() => setOpenDropdown(!openDropdown)}
