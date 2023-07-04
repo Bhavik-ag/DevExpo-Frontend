@@ -12,6 +12,8 @@ export type ProjectCardType = {
   created: string;
 };
 
+export const revalidate = 60;
+
 export default async function Projects() {
   const projects: { data: ProjectCardType[] | never[]; status: string } =
     await getProjects();
